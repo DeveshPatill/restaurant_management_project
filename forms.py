@@ -1,4 +1,6 @@
 from django import forms
+from django.core.Validators import validate_email
+from django.core exceptions import validatitionError
 from .models import Contact
 
 class ContactForm(forms.ModelForm):
@@ -6,8 +8,8 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ['name','email']
         labels = {
-            "name": "Devesh Patil",
-            "email": "patildevesh6707@gmail.com",
+            "name": "Your Full name",
+            "email": "Your Email address",
         }
 
         def clean_name(self):
@@ -19,6 +21,6 @@ class ContactForm(forms.ModelForm):
         def clean_email(self):
             email = self.cleaned_data.get('email')
             if not email or '@' not in email:
-                raise ValidationError('Enter a valid Email address.')
+                raise forms.ValidationError('Enter a valid Email address.')
             return email
 
