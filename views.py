@@ -24,5 +24,5 @@ def menu(request):
 # displaying the restaurants name on the homepage / fetching the name from the setting.py or model
 
 def homepage(request):
-    restaurant_name = setting.Restaurant_NAME
+    restaurant_name = setting.RESTAURANT_NAME
     return render(request, 'home.html', {'restaurant_name':restaurant_name})
