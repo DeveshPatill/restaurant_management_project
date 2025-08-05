@@ -4,6 +4,7 @@ from rest_framework import status
 from decimal import Decimal
 from django.shortcuts import render
 from .models import MenuItem
+from django.conf import settings
 
 @api_view(['GET'])
 def menu_api(request):
@@ -18,3 +19,10 @@ def menu_api(request):
 def menu(request):
     items = MenuItem.objects.all()
     return render(request, "menu.html", {"items":items})
+
+
+# displaying the restaurants name on the homepage / fetching the name from the setting.py or model
+
+def homepage(request):
+    restaurant_name = setting.Restaurant_NAME
+    return render(request, 'home.html', {'restaurant_name':restaurant_name})
