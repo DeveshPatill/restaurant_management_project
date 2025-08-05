@@ -28,8 +28,8 @@ class Order(models.Model):
         return f"Order #{self.pk} by {self.customer.username}"
 
 class OrderItem(models.Model):
-    order = models.Foreignkey(Order, on_delete.models.CASCADE)
-    menu_item = models.Foreignkey(Menu, on_delete.models.CASCADE)
+    order = models.ForeignKey(Order, on_delete.models.CASCADE)
+    menu_item = models.ForeignKey(Menu, on_delete.models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
