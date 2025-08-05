@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title> Restaurant Menu </title>
+</head>
+<body>
+    <h1> Our Menu </h1>
+    {% if menu %}
+    <ul>
+        {% for item in menu %}
+        <li>
+            <strong> {{item.name}}</strong>: {{item.description}} - {{item.price}}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p> No Menu Items available right now , please check back later on .</p>
+    {% endif %}
+</body>
+</html>
