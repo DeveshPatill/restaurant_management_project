@@ -11,13 +11,13 @@ class ContactForm(forms.ModelForm):
         }
 
         def clean_name(self):
-            name = self.cleandata.get('name')
+            name = self.cleaned_data.get('name')
             if len(name) < 2:
                 raise forms.ValidationError("Name Must be atleast 2 characters long.")
             return name
         
         def clean_email(self):
-            email = self.cleandata.get('email')
+            email = self.cleaned_data.get('email')
             if not email or '@' not in email:
                 raise ValidationError('Enter a valid Email address.')
             return email
