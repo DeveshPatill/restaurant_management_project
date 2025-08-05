@@ -7,7 +7,7 @@ class ContactForm(forms.ModelForm):
         fields = ['name','email']
         labels = {
             "name": "Devesh Patil",
-            "email": "patildevesh6707@gmail.com"
+            "email": "patildevesh6707@gmail.com",
         }
 
         def clean_name(self):
@@ -18,7 +18,7 @@ class ContactForm(forms.ModelForm):
         
         def clean_email(self):
             email = self.cleandata.get('email')
-            if not email:
-                raise ValidationError('Email is Required.')
+            if not email or '@' not in email:
+                raise ValidationError('Enter a valid Email address.')
             return email
 
