@@ -1,6 +1,6 @@
 from django import forms
-from django.core.Validators import validate_email
-from django.core exceptions import validatitionError
+from django.core.validators import validate_email
+from django.core exceptions import ValidatitionError
 from .models import Contact
 
 class ContactForm(forms.ModelForm):
