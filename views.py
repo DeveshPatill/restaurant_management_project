@@ -21,8 +21,13 @@ def menu(request):
     return render(request, "menu.html", {"items":items})
 
 
-# displaying the restaurants name on the homepage / fetching the name from the setting.py or model
+# displaying the restaurants name on the homepage / fetching the name from the setting.py or model [fetched the name from the settings.py here ]
 
 def homepage(request):
     restaurant_name = settings.RESTAURANT_NAME
     return render(request, 'home.html', {'restaurant_name':restaurant_name})
+
+# creating the view to display the restaurant name on the homepage. fetch the name from the model or settings .py [fetched the name from the models.py here]
+def homepage_1(request):
+    restaurant_name = Restaurant.objects.first()
+    return Response(request, "index.html", {"restaurant_name":restaurant_name})
