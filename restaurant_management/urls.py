@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import handler404
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,3 +29,4 @@ urlpatterns = [
     path('',views.homepage_view, name = "homepage"),
     path('about/',views.about_us_page, name="about"),
 ]
+handler404 = "restaurant_management.views.error_404_page"
