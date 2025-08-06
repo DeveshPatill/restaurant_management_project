@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About Us - {{restaurant_name}}</title>
+    </head>
+    <body>
+        <h1>About {{restaurant_name}} </h1>
+        <p> {{description}} </p>
+        {% if image_url %}
+            <img src="{{ image_url }}" alt="Restaurant Image " style="max-width: 100%; height:auto;" >
+        {% endif %}
+
+        <a href=" {% url 'homepage' %} ">Back to Home </a>
+
+    </body>
+</html>
