@@ -26,4 +26,5 @@ urlpatterns = [
     path('menu/', views.menu, name="menu"),
     path('',views.homepage, name="home"),
     path('',views.homepage_view, name = "homepage"),
+    path('about/',views.about_us_page, name="about"),
 ]
