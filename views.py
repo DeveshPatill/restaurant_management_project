@@ -38,7 +38,7 @@ def homepage_view(request):
     return render(request, "index.html", {"restaurant_name":restaurant_name})
 
 # for about us page for restaurant includes name, description & image
-
+#completed 
 def about_us_page(request):
     return render(request, "about_us.html",{
         "restaurant_name": get_restaurant_name(),
