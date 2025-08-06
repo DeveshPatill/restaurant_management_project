@@ -34,5 +34,5 @@ def get_restaurant_name():
     return restaurant.name if restaurant else settings.RESTAURANT_NAME
 
 def homepage_view(request):
-    name = get_restaurant_name()
-    return render(request, "index.html", {"Restaurant_name":name})
+    restaurant_name = get_restaurant_name()
+    return render(request, "index.html", {"restaurant_name":restaurant_name})
