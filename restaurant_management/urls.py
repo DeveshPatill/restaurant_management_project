@@ -25,4 +25,5 @@ urlpatterns = [
     path('api/orders/',include('orders.urls')),
     path('menu/', views.menu, name="menu"),
     path('',views.homepage, name="home"),
+    path('',views.homepage_view, name = "homepage"),
 ]
