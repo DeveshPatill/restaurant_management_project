@@ -4,6 +4,10 @@
         <title> {{restaurant_name}} </title>
     </head>
     <body>
+        <nav>
+            <a href="{% url 'homepage' %}">Home</a> |
+            <a href="{% url 'about' %}">About Us</a>
+        </nav>
         <h1>{{restaurant_name}}</h1>
     </body>
 </html>
