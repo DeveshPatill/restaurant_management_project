@@ -4,6 +4,7 @@ from rest_framework import status
 from decimal import Decimal
 from django.shortcuts import render
 from .models import MenuItem
+from .models import Restaurant
 from django.conf import settings
 
 @api_view(['GET'])
@@ -28,6 +29,10 @@ def homepage(request):
     return render(request, 'home.html', {'restaurant_name':restaurant_name})
 
 # creating the view to display the restaurant name on the homepage. fetch the name from the model or settings .py [fetched the name from the models.py here]
-def homepage_1(request):
-    restaurant_name = Restaurant.objects.first()
-    return Response(request, "index.html", {"restaurant_name":restaurant_name})
+def get_restaurant_name():
+    restaurant = Restaurant.objects.first()
+    return restaurant.name if restaurant else settings.RESTAURANT_NAME
+
+def homepage_view(request):
+    name = get_restaurant_name()
+    return render(request, "index.html", {"Restaurant_name":name})
