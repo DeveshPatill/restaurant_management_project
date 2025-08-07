@@ -118,6 +118,7 @@ USE_I18N = True
 USE_TZ = True
 
 RESTAURANT_NAME = "My Spicy Restaurant"
+RESTAURANT_PHONE_NUMBER = "+91 9833142944"
 
 
 # Static files (CSS, JavaScript, Images)
