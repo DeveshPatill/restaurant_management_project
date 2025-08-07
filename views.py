@@ -52,7 +52,6 @@ def error_404_page(request, exception):
 
 
 #creating a view to display the list of menu_items . using a simple hardcoded list here
-@api_view(['GET'])
 def menu_view(request):
     menu_items = [
         {"name":"french fries", "description":"Classic peri-peri fries ", "price":10.22},
