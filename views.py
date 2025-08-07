@@ -66,4 +66,8 @@ def my_homepage(request):
         "welcome_message" : "Welcome to our Restaurant, We don't serve meals, we serve Experiences. "
     }
     return render(request, 'homepage.html', context)
+
+# creating the method for contact_us page
+def contact_us_page(request):
+    return render(request, 'restaurant_management/templates/contact_us.html')
     
