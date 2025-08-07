@@ -59,3 +59,12 @@ def menu_view(request):
         {"name":"Capsicum Pizza", "description":"Classic Chhes Pizza", "price":9.22},
     ]
     return render(request, "menu.html", {"menu_items":menu_items}, status=status.HTTP_200_OK)
+
+#creating the simple django template for homepage , which can display the restaurant name and welcome message
+def my_homepage(request):
+    context = {
+        "restaurant_name" : "My Spicy Restaurant",
+        "welcome_message" : "Welcome to our Restaurant, We don't serve meals, we serve Experiences. "
+    }
+    return render(request, 'homepage.html', context)
+    
