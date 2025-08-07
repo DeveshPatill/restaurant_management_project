@@ -76,4 +76,12 @@ def contact_us_page(request):
 def displaying_Contact(request):
     phone = settings.RESTAURANT_PHONE_NUMBER
     return render(request, 'restaurant_management/templates/homepage.html', {'phone':phone})
+
+
+# Instead of adding it manually in every view , use a context processor so current_year is available in every template
+
+def current_year(request):
+    return {
+        'current_year': dateTime.now().year
+    }
     
