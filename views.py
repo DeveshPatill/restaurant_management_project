@@ -49,3 +49,13 @@ def about_us_page(request):
 # added template and defining the custom 404_page view logic here
 def error_404_page(request, exception):
     return render(request, '404_page.html', status=404)
+
+
+#creating a view to display the list of menu_items . using a simple hardcoded list here
+@api_view(['GET'])
+def menu_view(request):
+    menu_items = [
+        {"name":"french fries", "description":"Classic peri-peri fries ", "price":10.22},
+        {"name":"Capsicum Pizza", "description":"Classic Chhes Pizza", "price":9.22},
+    ]
+    return render(request, "menu.html", {"menu_items":menu_items}, status=status.HTTP_200_OK)
