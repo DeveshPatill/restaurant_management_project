@@ -72,5 +72,8 @@ def contact_us_page(request):
     return render(request, 'restaurant_management/templates/contact_us.html')
 
 
-# displaying the restaurants name 
+# displaying the restaurants phone number on the homepage with the help of settings.py or models.py
+def displaying_Contact(request):
+    phone = settings.RESTAURANT_PHONE_NUMBER
+    return render(request, 'restaurant_management/templates/homepage.html', {'phone':phone})
     
