@@ -70,4 +70,7 @@ def my_homepage(request):
 # creating the method for contact_us page
 def contact_us_page(request):
     return render(request, 'restaurant_management/templates/contact_us.html')
+
+
+# displaying the restaurants name 
     
