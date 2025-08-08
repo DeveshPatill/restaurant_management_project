@@ -6,6 +6,7 @@ from django.shortcuts import render
 from .models import MenuItem
 from .models import Restaurant
 from django.conf import settings
+from django.http import HttpResponse
 
 @api_view(['GET'])
 def menu_api(request):
@@ -84,4 +85,15 @@ def current_year(request):
     return {
         'current_year': dateTime.now().year
     }
+
+#basic error handeling in django view
+def list_restaurants(request):
+    try:
+        restaurants_list = Restaurant.objects.all()
+        return render(request, 'restaurant_list.html', {'restaurants_list':restaurants_list})
+    except Restaurant.DoesNotExist:
+        return HttpResponse("No Restaurant Found", status=404)
+    except Exception as e:
+        print(f"error occurred {e}")
+        return HttpResponse("something went wrong. Please, Try again later", status=500)
     
