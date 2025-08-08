@@ -6,3 +6,7 @@ class Feedback(models.Model):
 
     def __str__(self):
         return f"Feedback #{self.id}"
+
+
+#python manage.py makemigrations
+#python manahe.py migrate
