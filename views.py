@@ -104,7 +104,7 @@ def feedback(request):
         form = FeedBackForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, "feedback.html")
+            return render(request, "feedback_thanks.html")
         else:
             form = FeedBackForm()
             return render(request, 'feedback.html', {'form':form})
