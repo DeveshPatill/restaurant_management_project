@@ -108,4 +108,12 @@ def feedback(request):
         else:
             form = FeedBackForm()
             return render(request, 'feedback.html', {'form':form})
+
+#method for opening_hour in footer
+def opening_hour(request):
+    return {
+        'opening_hour' : 'Mon-Fri: 11am-9pm, Sat-Sun: 10am-10pm'
+    }
+
+
     
