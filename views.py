@@ -2,11 +2,12 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from decimal import Decimal
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import MenuItem
 from .models import Restaurant
 from django.conf import settings
 from django.http import HttpResponse
+from .forms import FeedBackForm
 
 @api_view(['GET'])
 def menu_api(request):
@@ -96,4 +97,15 @@ def list_restaurants(request):
     except Exception as e:
         print(f"error occurred {e}")
         return HttpResponse("something went wrong. Please, Try again later", status=500)
+
+#view for feedback form 
+def feedback(request):
+    if request.method == 'POST':
+        form = FeedBackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, "feedback.html")
+        else:
+            form = FeedBackForm()
+            return render(request, 'feedback.html', {'form':form})
     
