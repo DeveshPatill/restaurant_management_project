@@ -70,6 +70,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 #adding custom processor here
                 'core.context_processor.current_year',
+                'restaurant_management.context_processors.opening_hours',
             ],
         },
     },
