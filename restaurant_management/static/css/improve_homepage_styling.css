@@ -29,3 +29,16 @@ button {
 button:hover {
     background-color: #357ab8;
 }
+
+.logo-header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.restaurant-logo {
+    width: 180px;
+    height: auto;
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0.0.0.0.2);
+}
