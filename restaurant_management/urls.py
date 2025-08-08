@@ -30,5 +30,6 @@ urlpatterns = [
     path('about/',views.about_us_page, name="about"),
     path('',views.myhomepage, name='homepage'),
     path('contact/',views.contact_us_page, name='contact'),
+    path('feedback',views.feedback, name='feedback'),
 ]
 handler404 = "restaurant_management.views.error_404_page"
