@@ -115,5 +115,7 @@ def opening_hour(request):
         'opening_hour' : 'Mon-Fri: 11am-9pm, Sat-Sun: 10am-10pm'
     }
 
-
-    
+# Displaying the restaurant address in homepage.html
+def homepage_address(request):
+    restaurant = Restaurant.objects.first()
+    return render(request, 'homepage.html', {'restaurant_address':restaurant})
