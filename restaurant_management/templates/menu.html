@@ -13,6 +13,10 @@
                 <strong>{item.name}</strong> : {item.description} - {item.price}
             </li>
             {% endfor %}
+            
+            {% if item.image %}
+                <img src="{{item.image.url}}" alt="{{item.name}}" style="max-width: 200px; ">
+            {% endif %}
         </ul>
     </Body>
 </html>
