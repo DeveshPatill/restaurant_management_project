@@ -15,7 +15,9 @@
             {% endfor %}
             
             {% if item.image %}
-                <img src="{{item.image.url}}" alt="{{item.name}}" style="max-width: 200px; ">
+                <img src="{{item.image.url}}" alt="{{item.name}}" style="max-width: 200px; height:auto; ">
+            {% else %}
+                <img src="{{%static 'images/placeholder.png' %}}" alt="No image" style="max-width: 200px; height:auto;">
             {% endif %}
         </ul>
     </Body>
