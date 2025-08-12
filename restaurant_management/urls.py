@@ -33,3 +33,5 @@ urlpatterns = [
     path('feedback',views.feedback, name='feedback'),
 ]
 handler404 = "restaurant_management.views.error_404_page"
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
