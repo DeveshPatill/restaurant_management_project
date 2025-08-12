@@ -119,3 +119,8 @@ def opening_hour(request):
 def homepage_address(request):
     restaurant = Restaurant.objects.first()
     return render(request, 'homepage.html', {'restaurant_address':restaurant})
+
+# displaying to show menu images and details
+def menu_view(request):
+    items = MenuItem.objects.all()
+    return render(request, 'menu.html', {'menu_items':items})
