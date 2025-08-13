@@ -33,5 +33,14 @@ class ContactSubmission(models.Model):
         return f"{self.name} - {self.email}"
 
 
+class RestaurantLocation(models.Model):
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=100)
+    zip_code = models.CharField(max_length=25)
+
+    def __str__(self):
+        return f"{self.address} {self.city} {self.state} {self.zip_code}"
+
 #python manage.py makemigrations
 #python manahe.py migrate
