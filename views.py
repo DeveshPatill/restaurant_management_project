@@ -7,7 +7,7 @@ from .models import MenuItem
 from .models import Restaurant
 from django.conf import settings
 from django.http import HttpResponse
-from .forms import FeedBackForm
+from .forms import FeedBackForm,MenuItem,ContactForm
 
 @api_view(['GET'])
 def menu_api(request):
@@ -124,3 +124,18 @@ def homepage_address(request):
 def menu_view(request):
     items = MenuItem.objects.all()
     return render(request, 'menu.html', {'menu_items':items})
+
+
+# 
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.Post)
+        if form.is_valid():
+            form.save()
+            return redirect('contact_success')
+        else:
+            form = ContactForm()
+            return render(request, 'contactForm.html', {'form':form})
+
+def contact_success(request):
+    return render(request, 'contact_success.html')
