@@ -1,5 +1,6 @@
 from django import forms
-from .models import Feedback
+from .models import Feedback,MenuItem,ContactForm
+
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
@@ -13,4 +14,8 @@ class MenuItemForm(forms.ModelForm):
     class Meta:
         model = MenuItem
         fields = ['name','description','price','image']
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        fields = ['name','email']
         
