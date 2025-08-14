@@ -17,5 +17,6 @@ class MenuItemForm(forms.ModelForm):
 
 class ContactForm(forms.ModelForm):
     class Meta:
-        fields = ['name','email']
+        fields = ['name','email','message']
+
         
