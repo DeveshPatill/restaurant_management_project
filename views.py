@@ -8,6 +8,7 @@ from .models import Restaurant
 from django.conf import settings
 from django.http import HttpResponse
 from .forms import FeedBackForm,MenuItem,ContactForm
+from django.core.mail import send_mail
 
 @api_view(['GET'])
 def menu_api(request):
@@ -131,11 +132,24 @@ def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.Post)
         if form.is_valid():
-            form.save()
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            #form.save()
+
+            #send mail
+            send_mail(
+                subject=f"New Contact Message From {name}",
+                message=f"From {name} <{email}>\n\nMessage:\n{message}",
+                from_email=email,
+                recipient_list=['patildevesh677@gmail.com'],
+            )
             return redirect('contact_success')
-        else:
-            form = ContactForm()
-            return render(request, 'contactForm.html', {'form':form})
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact_Us.html', {'form':form})
+    
 
 def contact_success(request):
     return render(request, 'contact_success.html')
