@@ -29,8 +29,19 @@
         <p>Address:{{restaurant.address}}</p>
         <p>{{welcome_message}}</p>
         <div class="search-bar">
-            <input type="text" class="search menu item" name="search">
-            <button type="submit">Button</button>
+            <form method="GEt" method=" ">
+            <input type="text" placeholder="Search Menu Item..." value="{{request.GET.q}}" class="search menu item" name="q">
+            <button type="submit">Search</button>
+            </form>
         </div>
+        {% if items %}
+            <ul>
+                {% for item in items %}
+                    <li>{ item.name }</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No Menu Items Found</p>
+        {% endif %}
     </body>
 </html>
