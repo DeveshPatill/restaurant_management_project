@@ -148,4 +148,11 @@ def search_bar(request):
         items = MenuItem.objects.filter(name__icontains = query)
     else:
         items = MenuItem.objects.all()
-    return render(request, 'homepage.html', {'items':items, 'query':query})
+    context = {
+        'restaurant_name':'My-Restaurant',
+        'phone':'+91 9833142949',
+        'restaurant':{'address':'Navi Mumbai, Khoparkhairaine'},
+        'welcome_message':'welcome to our restaurant',
+        'items':items,
+    }
+    return render(request, 'homepage.html',context)
