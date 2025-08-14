@@ -7,10 +7,23 @@
     </head>
     <Body>
         <h1>Menu</h1>
+
+        <!------ Menu Item Form----->
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Add Item</button>
+        </form>
+        <hr>
+
         <ul>
             {% for item in menu_items %}
             <li>
                 <strong>{item.name}</strong> : {item.description} - {item.price}
+            </li>
+            {% empty %}
+            <li>
+                No Menu Items yet
             </li>
             {% endfor %}
             
