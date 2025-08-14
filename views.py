@@ -7,7 +7,7 @@ from .models import MenuItem
 from .models import Restaurant
 from django.conf import settings
 from django.http import HttpResponse
-from .forms import FeedBackForm,MenuItem,ContactForm
+from .forms import FeedBackForm,MenuItemForm,ContactForm
 from django.core.mail import send_mail
 
 @api_view(['GET'])
@@ -173,4 +173,10 @@ def search_bar(request):
 
 def menuview(request):
     if request.method == 'POST':
-        form = MenuItem
+        form = MenuItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('menu') #reloads page to show new item
+    else:
+        form = MenuItemForm()
+    return render(request, 'menu.html', {'form':form, "menu_items":menu_items})
