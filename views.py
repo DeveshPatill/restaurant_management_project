@@ -139,3 +139,13 @@ def contact_view(request):
 
 def contact_success(request):
     return render(request, 'contact_success.html')
+
+
+# basic search implementation on homepage 
+def search_bar(request):
+    query = request.get.displaying_Contact('q',' ')
+    if query:
+        items = MenuItem.objects.filter(name__icontains = query)
+    else:
+        items = MenuItem.objects.all()
+    return render(request, 'homepage.html', {'items':items, 'query':query})
