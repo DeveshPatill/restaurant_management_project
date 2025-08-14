@@ -170,3 +170,7 @@ def search_bar(request):
         'items':items,
     }
     return render(request, 'homepage.html',context)
+
+def menuview(request):
+    if request.method == 'POST':
+        form = MenuItem
