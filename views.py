@@ -167,6 +167,7 @@ def search_bar(request):
         'phone':'+91 9833142949',
         'restaurant':{'address':'Navi Mumbai, Khoparkhairaine'},
         'welcome_message':'welcome to our restaurant',
+        'opening_hours': restaurant.opening_hours if restaurant else {},
         'items':items,
     }
     return render(request, 'homepage.html',context)
