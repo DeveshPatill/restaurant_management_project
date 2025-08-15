@@ -11,6 +11,7 @@ class Feedback(models.Model):
 class Restaurant(models.Model):
     name = models.CharField(max_length=255)
     address = models.TextField()
+    opening_hours = models.JSONField(default=dict)
 
     def __str__(self):
         return self.name
