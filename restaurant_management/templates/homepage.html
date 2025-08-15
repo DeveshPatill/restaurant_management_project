@@ -25,6 +25,12 @@
             <img src="static/images/logo.png" alt="Restaurant-logo" class="restaurant-logo">
         </header>
         <h1>{{restaurant_name}}</h1>
+        <h2>Opening Hours</h2>
+            <ul>
+                {% for day,hours in opening_hours.items %}
+                    <li><strong>{{day}}:<strong>{{hours}}</li>
+                {% endfor %}
+            </ul>
         <p><strong>phone :</strong>{{phone}}</p>
         <p>Address:-{{restaurant.address}}</p>
         <p>{{welcome_message}}</p>
