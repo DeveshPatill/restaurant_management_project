@@ -54,7 +54,7 @@ def error_404_page(request, exception):
     return render(request, '404_page.html', status=404)
 
 
-#creating a view to display the list of menu_items . using a simple hardcoded list here
+# creating a view to display the list of menu_items . using a simple hardcoded list here
 def menu_view(request):
     menu_items = [
         {"name":"french fries", "description":"Classic peri-peri fries ", "price":10.22},
@@ -62,7 +62,7 @@ def menu_view(request):
     ]
     return render(request, "menu.html", {"menu_items":menu_items}, status=status.HTTP_200_OK)
 
-#creating the simple django template for homepage , which can display the restaurant name and welcome message
+# creating the simple django template for homepage , which can display the restaurant name and welcome message
 def my_homepage(request):
     context = {
         "restaurant_name" : "My Spicy Restaurant",
@@ -99,7 +99,7 @@ def list_restaurants(request):
         print(f"error occurred {e}")
         return HttpResponse("something went wrong. Please, Try again later", status=500)
 
-#view for feedback form 
+# view for feedback form 
 def feedback(request):
     if request.method == 'POST':
         form = FeedBackForm(request.POST)
@@ -110,7 +110,7 @@ def feedback(request):
             form = FeedBackForm()
             return render(request, 'feedback.html', {'form':form})
 
-#method for opening_hour in footer
+# method for opening_hour in footer
 def opening_hour(request):
     return {
         'opening_hour' : 'Mon-Fri: 11am-9pm, Sat-Sun: 10am-10pm'
