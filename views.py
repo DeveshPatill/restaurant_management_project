@@ -181,3 +181,8 @@ def menuview(request):
     else:
         form = MenuItemForm()
     return render(request, 'menu.html', {'form':form, "menu_items":menu_items})
+
+# displaying the restaurants phonenumber on the home page
+def phonenumber(request):
+    restaurant = Restaurant.objects.first()
+    return render(request, 'home.html', {'restaurant':restaurant})
