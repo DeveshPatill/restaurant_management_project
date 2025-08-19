@@ -21,6 +21,11 @@
         </style>
     </head>
     <body>
+        <!--->
+        {% if restaurant.logo %}
+            <img src="{{restarant.logo.url}}", alt='Restaurant Logo style="width:150px height:auto">
+        {% endif %}
+        <!---->
         <header class="logo-header">
             <img src="static/images/logo.png" alt="Restaurant-logo" class="restaurant-logo">
         </header>
