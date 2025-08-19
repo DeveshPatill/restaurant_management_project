@@ -13,6 +13,7 @@ class Restaurant(models.Model):
     address = models.TextField()
     opening_hours = models.JSONField(default=dict)
     phone_number = models.CharField(max_length=15,blank=True,null=True)
+    logo = models.ImageField(upload_to='restaurant_logos/' ,null =True, blank=True)
 
     def __str__(self):
         return self.name
