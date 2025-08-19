@@ -186,3 +186,8 @@ def menuview(request):
 def phonenumber(request):
     restaurant = Restaurant.objects.first()
     return render(request, 'home.html', {'restaurant':restaurant})
+
+# dislpaying logo // --> this method is for logo
+def logo(request):
+    restaurant = Restaurant.objects.first()
+    return render(request, 'home.html',{'restaurant':restaurant})
