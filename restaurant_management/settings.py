@@ -72,6 +72,7 @@ TEMPLATES = [
                 #adding custom processor here
                 'core.context_processor.current_year',
                 'restaurant_management.context_processors.opening_hours',
+                'restaurant_management.context_processors.cart_item_count',
             ],
         },
     },
