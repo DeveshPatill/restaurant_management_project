@@ -191,3 +191,12 @@ def phonenumber(request):
 def logo(request):
     restaurant = Restaurant.objects.first()
     return render(request, 'home.html',{'restaurant':restaurant})
+
+
+
+#for displaying total items in cart
+def cart_items(request):
+    total_items=0
+    if request.user.is_authenticated():
+        total_items = Cart.objects.filter(user=request.user).count()
+    return render(request, 'home.html', {'total_items':total_items})
