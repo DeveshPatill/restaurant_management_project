@@ -197,6 +197,6 @@ def logo(request):
 #for displaying total items in cart
 def cart_items(request):
     total_items=0
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         total_items = Cart.objects.filter(user=request.user).count()
     return render(request, 'home.html', {'total_items':total_items})
