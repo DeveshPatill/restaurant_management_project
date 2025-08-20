@@ -17,6 +17,16 @@ class MenuItemForm(forms.ModelForm):
 
 class ContactForm(forms.ModelForm):
     class Meta:
+        model = Contact
         fields = ['name','email','message']
+        error_messages = {
+            "email" = {
+                "invalid":"Please enter a valid email address",
+                "required":"Email is required"
+            },
+            "message" = {
+                "required":"message cannot be empty"
+            }
+        }
 
         
