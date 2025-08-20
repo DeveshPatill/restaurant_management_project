@@ -45,5 +45,14 @@ class RestaurantLocation(models.Model):
     def __str__(self):
         return f"{self.address} {self.city} {self.state} {self.zip_code}"
 
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product_name = models.CharField(max_length=100)
+    quantity = models.PositiveIntegerField(default=1)
+
+
+    def __str__(self):
+        return f"{self.name} ({self.quantity})"
+        
 #python manage.py makemigrations
 #python manahe.py migrate
