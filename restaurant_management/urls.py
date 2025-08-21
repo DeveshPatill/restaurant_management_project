@@ -33,6 +33,7 @@ urlpatterns = [
     path('feedback/',views.feedback, name='feedback'),
     path('contact/',views.contact_view, name='contact'),
     path('contact/success/', views.contact_success, name='contact_success'),
+    path('faq/', views.faq_page, name='faq'),
 ]
 handler404 = "restaurant_management.views.error_404_page"
 if settings.DEBUG:
