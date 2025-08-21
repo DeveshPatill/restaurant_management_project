@@ -200,3 +200,8 @@ def cart_items(request):
     if request.user.is_authenticated:
         total_items = Cart.objects.filter(user=request.user).count()
     return render(request, 'home.html', {'total_items':total_items})
+
+#FAQ
+def faq_page(request):
+    return render(request, 'faq.html')
+    
