@@ -17,7 +17,7 @@
                 Open 
             </span>
             <span style="background-color: #fee2e2; color: #b91c1c; font-weight: 600; padding: 8px 16px; border-radius: 9999px; font-size: 14px;">
-                {{ current_date}}
+                {{ current_date|date:"d-m-y H:i"}}
             </span>
 
             <!--------main-content- box------>
@@ -33,9 +33,9 @@
             </div>
         </div>
         <script>
-            const button = document.queryselector('button');
-            btn.addEventListner('mouseover',() => btn.style.backgroundColor = '#1e40af');
-            btn.addEventListner('mouseout', () => btn.style.backgroundColor = "#2563eb");
+            const button = document.querySelector('button');
+            button.addEventListener('mouseover',() => button.style.backgroundColor = '#1e40af');
+            button.addEventListener('mouseout', () => button.style.backgroundColor = "#2563eb");
         </script>    
         </script>
     </body>
