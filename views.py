@@ -205,3 +205,9 @@ def cart_items(request):
 def faq_page(request):
     return render(request, 'faq.html')
     
+#displayb current date and time on the homepage
+def homee(request):
+    context = {
+        "current_time": dateTime.now()
+    }
+    return render(request, "home.html",context)
