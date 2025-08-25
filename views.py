@@ -211,3 +211,8 @@ def homee(request):
         "current_time": dateTime.now()
     }
     return render(request, "home.html",context)
+
+#displaying image on about us page
+def about(request):
+    about_data = About.objects.first()
+    return render(request, 'about_us.html', {'about': about_data})
