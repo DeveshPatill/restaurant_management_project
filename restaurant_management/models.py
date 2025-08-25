@@ -1,11 +1,12 @@
 from django.db import models
 
 class Feedback(models.Model):
+    name = models.CharField(max_length=100)
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Feedback #{self.id}"
+        return f"{self.name} - {self.comment}- Feedback #{self.id}"
 
 
 class Restaurant(models.Model):
