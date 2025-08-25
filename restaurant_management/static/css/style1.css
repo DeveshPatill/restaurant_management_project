@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.home{
+    background-image: url(restaurant/images-bg.jpg);
+    background-size: cover;
+    background-color: center;
+    height: 90vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay{
+    background: rgba(0.0.0.0.5);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.menu-preview{
+    padding: 2rem;
+    text-align: center;
+}
+
+.food-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.food-gallery img {
+    width: 300px;
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.food-gallery img:hover {
+    transform: scale(1.05);
+}
