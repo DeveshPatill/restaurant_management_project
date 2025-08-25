@@ -54,6 +54,15 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.quantity})"
+
+class About(models.Model):
+    title = models.CharField(max_length=200, default='About Us')
+    description = models.TextField()
+    image = models.ImageField(upload_to='about/', blank=True, null=True)
+
+    def __str__(self):
+        return self.title
+
         
 #python manage.py makemigrations
 #python manahe.py migrate
