@@ -2,116 +2,25 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{{restaurant_name}}</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f9f9f9;
-                margin: 40px;
-                color: #333;
-            }
-
-            h1 {
-                color: #d94f30;
-                font-size: 36px;
-            }
-            p {
-                font-size: 18px;
-            }
-            .welcome-section {
-                text-align: center;
-                margin: 30px auto;
-                padding: 20px;
-                background: #fafafa;
-                border-radius:12px;
-                box-shadow: 0 2px 8px(0.0.0.0.1);
-                max-width: 700px;
-            }
-            .welcome-section h1 {
-                font-size: 28px;
-                font-weight: bold;
-                color: #333;
-                margin-bottom: 8px;
-            }
-            welcom-section p {
-                font-size: 18px;
-                color: #666;
-                font-style: italic;
-            }
-            .breadcrumb {
-                list-style: none;
-                display: flex;
-                font-size: 14px;
-                padding: 10px;
-            }
-            .breadcrumb li {
-                margin-right: 5px;
-            }
-            .breadcrumb li::after {
-                content: ">";
-                margin-left: 5px;
-            }
-            .breadcrumb li:last-child:: after {
-                content: " ";
-            }
-            .breadcrumb a {
-                text-decoration: none;
-                color: #007bff;
-            }
-            .breadcrumb a:hover {
-                text-decoration: underline;
-            }
-            .breadcrumb .active {
-                font-weight: bold;
-                color: #333;
-            }
-        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Restaurant Homepage</title>
+        <link rel="stylesheet" href="style.css"
     </head>
     <body>
-        <!--->
-        {% if restaurant.logo %}
-            <img src="{{restarant.logo.url}}", alt='Restaurant Logo style="width:150px height:auto">
-        {% endif %}
-        <!---->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item"><a href="/products">Products</a></li>
-                <li class="breadcrumb-item-active" aria-current="page">Electronics</li>
-            </ol> 
-        </nav>
-        <header class="logo-header">
-            <img src="static/images/logo.png" alt="Restaurant-logo" class="restaurant-logo">
+        <header class="hero">
+            <div class="overlay">
+                <h1> Welcome to our Restaurant </h1>
+                <p>Delicious food, cozy-frozy ambience</p>
+            </div>
         </header>
-        <h1>{{restaurant_name}}</h1>
-        <h2>Opening Hours</h2>
-            <ul>
-                {% for day,hours in opening_hours.items %}
-                    <li><strong>{{day}}:<strong>{{hours}}</li>
-                {% endfor %}
-            </ul>
-        <p><strong>phone :</strong>{{phone_number}}</p>
-        <p><a href="{% url 'faq' %}">View Faqs</a></p>
-        <p>Address:-{{restaurant.address}}</p>
-        <div class="welcome-section" >
-            <h1>Welcome to our Restaurant</h1>
-            <p>{{welcome_message}}</p>
-        </div>
-        <p>Cart items: {{total_items}}</p>
-        <div class="search-bar">
-            <form method="GEt" method=" ">
-            <input type="text" placeholder="Search Menu Item..." value="{{request.GET.q}}" class="search menu item" name="q">
-            <button type="submit">Search</button>
-            </form>
-        </div>
-        {% if items %}
-            <ul>
-                {% for item in items %}
-                    <li>{ item.name }</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No Menu Items Found</p>
-        {% endif %}
+
+        <section class="menu-preview">
+            <h2> Our Specialities </h2>
+            <div class="food-gallery">
+                <img src="image/pizza.jpg" alt="pizza">
+                <img src="image/pasta.jpg" alt="pasta">
+                <img src="image/dessert.jpg" alt="dessert">
+            </div>
+        </section>  
     </body>
 </html>
