@@ -4,8 +4,14 @@
         <title>About Us - {{restaurant_name}}</title>
     </head>
     <body>
+        <h2>{{about.title}}</h2>
         <h1>About {{restaurant_name}} </h1>
-        <p> {{description}} </p>
+        <p> {{about.description}} </p>
+
+        <!--{% if about.image %}
+                <img src="{{about.image.url}} alt="Restaurant-Image" width=400
+            {% endif %}-->
+        
         {% if image_url %}
             <img src="{{ image_url }}" alt="Restaurant Image " style="max-width: 100%; height:auto;" >
         {% endif %}
