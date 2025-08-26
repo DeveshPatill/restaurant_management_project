@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    {% include "partials/breadcrumbs.html" %}
+
+    <div class="card window p-4">
+        <h2 class="text-success">Ordered Confirmed!</h2>
+        <p>Thank You for your Order</p>
+        <p>Your Order Number is : <strong>#{{Order_number}</strong></p>}
+        <a href="/" class="btn btn-primary mt-3"> Back to Home</a>
+    </div>
+</div>
+{% endblock %}
