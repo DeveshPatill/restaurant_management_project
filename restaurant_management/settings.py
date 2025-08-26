@@ -74,7 +74,7 @@ TEMPLATES = [
                 'restaurant_management.context_processors.opening_hours',
                 'restaurant_management.context_processors.cart_item_count',
                 'restaurant_management.context_processors.phone',
-                
+                'restaurant_management.context_processors.breadcrumb_context,'
             ],
         },
     },
