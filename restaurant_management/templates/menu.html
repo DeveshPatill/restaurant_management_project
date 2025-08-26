@@ -1,37 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            My Spicy Restaurant - Menu
-        </title>
+        <meta charset="UTF-8">
+        <title> menu page </title>
     </head>
-    <Body>
-        <h1>Menu</h1>
-
-        <!------ Menu Item Form----->
-        <form method="post">
-            {% csrf_token %}
-            {{form.as_p}}
-            <button type="submit">Add Item</button>
-        </form>
-        <hr>
-
+    <body>
+        <h2>Menu</h2>
         <ul>
-            {% for item in menu_items %}
+            {% for id,item in menu.items %}
             <li>
-                <strong>{item.name}</strong> : {item.description} - {item.price}
-            </li>
-            {% empty %}
-            <li>
-                No Menu Items yet
+                {{item.name}} - {item.price}}
+                <a href="{% url 'add_to_cart' id %}">Add to cart</a>
             </li>
             {% endfor %}
-            
-            {% if item.image %}
-                <img src="{{item.image.url}}" alt="{{item.name}}" style="max-width: 200px; height:auto; ">
-            {% else %}
-                <img src="{{%static 'images/placeholder.png' %}}" alt="No image" style="max-width: 200px; height:auto;">
-            {% endif %}
         </ul>
-    </Body>
+        <a href="{% url 'view_cart' %}"> View Cart</a>
+    </body>
 </html>
