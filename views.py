@@ -4,7 +4,7 @@ from rest_framework import status
 from decimal import Decimal
 from django.shortcuts import render, redirect
 from .models import MenuItem
-from .models import Restaurant
+from .models import Restaurant,Special
 from django.conf import settings
 from django.http import HttpResponse
 from .forms import FeedBackForm,MenuItemForm,ContactForm
@@ -246,3 +246,9 @@ def view_cart(request):
         total += subtotal
         cart_items.append({"name":item["name"], "qty":qty, "subtotal":subtotal})
     return render(request, "cart.html", {"cart_items":cart_items, "total":total})
+
+
+# displaying the specials
+def home_(request):
+    specials = Special.objects.all()
+    return render(request, 'home.html', {"specials":specials})
