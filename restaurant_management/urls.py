@@ -39,6 +39,7 @@ urlpatterns = [
     path("cart/", views.view_cart, name="cart"),
     path("privacy-policy/", views.privacy_policy,name="privacy-policy"),
     path("order/confirmation/", views.order_confirmation, name="order_confirmation")
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 handler404 = "restaurant_management.views.error_404_page"
 if settings.DEBUG:
