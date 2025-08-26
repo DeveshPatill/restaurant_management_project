@@ -216,3 +216,33 @@ def homee(request):
 def about(request):
     about_data = About.objects.first()
     return render(request, 'about_us.html', {'about': about_data})
+
+
+# shopping cart functionality
+
+MENU_ITEMS = {
+    1:{"name":"pizza", "price": 10},
+    2:{"name":"burger","price": 5},
+    3:{"name":"pasta", "price": 8},
+}
+
+def menuu(request):
+    return render (request, "menu.html", {"menu":MENU_ITEMS})
+
+def add_to_cart(request, item_id):
+    cart = request.session.get("cart",{})
+    cart[str{item_id}] = cart.get(str(item_id), 0) + 1
+    request.session["cart"] = cart #save back to session
+    return redirect("view_cart")
+
+def view_cart(request):
+    cart = request.session.get("cart", {})
+    cart_items = []
+    total = 0
+
+    for item_id,qty in cart.items():
+        item = MENU_ITEMS[int(item_id)]
+        subtotal = item["price"] * qty
+        total += subtotal
+        cart_items.append({"name":item["name"], "qty":qty, "subtotal":subtotal})
+    return render(request, "cart.html", {"cart_items":cart_items, "total":total})
