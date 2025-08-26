@@ -153,3 +153,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'patildevesh677@gmail.com'
 EMAIL_HOST_PASSWORD = 'my_app_password'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+#for login purpose
+LOGIN_REDIRECT_URL ="/"
+LOGOUT_REDIRECT_URL ="/"
