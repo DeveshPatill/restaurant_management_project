@@ -252,3 +252,7 @@ def view_cart(request):
 def home_(request):
     specials = Special.objects.all()
     return render(request, 'home.html', {"specials":specials})
+
+# for privacy policy page
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
