@@ -1,15 +1,26 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% block content %}
-<h2>Welcome to Homepage</h2>
+<div class="container text-center mt-5">
+    <h1>Welcome to our store</h1>
+    <p>Delicious meals Delivered fresh to u</p>
 
-{% if user.is_authenticated %}
-<p>Hello, {{user.username}}</p>
-<a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
-{% else %}
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
-{% endif %}
+    <a href="{% url 'order_page' %}" class="order-btn">Order Now</a>
+</div>
+
+<style>
+    .order-btn{
+    display: inline-block;
+    background-color: #ff5722;
+    color: white;
+    padding: 15px 30px;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:8px;
+    text-decorationnone;
+    transition: background 0.3s ease;
+    }
+    .order-btn:hover {
+    background-color: #e64a19;
+    }
+</style>
 {% endblock %}
