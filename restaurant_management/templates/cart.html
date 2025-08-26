@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Your Cart</title>
+    </head>
+    <body>
+        <h2>Your Cart</h2>
+        <ul>
+        {% for item in cart_items %}
+            <li>{{item.name}} (x{{item.qty}}) - {{item.subtotal}}</li>
+        {% endfor %}
+        </ul>
+        <h3> Total {total} </h3>
+        <a href="{% url 'menu' %}"> Back to Menu </a>
+    </body>
+</html>
