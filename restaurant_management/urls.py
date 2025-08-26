@@ -35,6 +35,8 @@ urlpatterns = [
     path('contact/success/', views.contact_success, name='contact_success'),
     path('faq/', views.faq_page, name='faq'),
     path('about/', views.about, name='about')
+    path('add/<int:item_id/', views.add_to_cart, name="add_to_cart"),
+    path("cart/", views.view_cart, name="cart"),
 ]
 handler404 = "restaurant_management.views.error_404_page"
 if settings.DEBUG:
