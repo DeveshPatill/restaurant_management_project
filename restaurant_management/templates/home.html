@@ -1,42 +1,20 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ restaurant_name }}</title>
-        <link rel="stylesheet" href="{% static css/style.css %}">
+        <title> Your Specials </title>
+        <meta charset="UTF-8">
     </head>
-    <body style="margin: 0; font-family: 'Segoe UI', Arial, Sans-Serif; background-color: #3f9fafb; color: 1f2937;" >
-        <div style="max-width: 800px; margin: 60px auto; padding: 20px;">
-
-            <!-- title--->
-            <h1 style="display: flex ; justify-content: center; gap: 16px; margin-bottom: 30px;"> 
-                Welcome to {{restaurant_name}} 
-            </h1>
-            <span style=" background-color: #dbeafe; color: #1d4ed8; font-weight: 600; padding: 8px 16px; border-radius: 9999px; font-size: 14px;"> 
-                Open 
-            </span>
-            <span style="background-color: #fee2e2; color: #b91c1c; font-weight: 600; padding: 8px 16px; border-radius: 9999px; font-size: 14px;">
-                {{ current_date|date:"d-m-y H:i"}}
-            </span>
-
-            <!--------main-content- box------>
-            <div style="background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20 rgba(0,0,0,0.1);">
-                <p style="font-size: 18px; line-height: 1.6; margin-bottom: 24px; text-align: center;">
-                    Experience the Best Cusine at <strong>{{restaurant_name}}</strong>We are Dedicated to serve delicious dishes to serve with fresh ingredients and hospitality.
-                </p>
-                <div style="text-align: center">
-                    <button style="background-color: #2563eb; color: white; padding: 12px 24px; font-size: 16px; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s;">
-                        View Menu
-                    </button>
-                </div>
-            </div>
-        </div>
-        <script>
-            const button = document.querySelector('button');
-            button.addEventListener('mouseover',() => button.style.backgroundColor = '#1e40af');
-            button.addEventListener('mouseout', () => button.style.backgroundColor = "#2563eb");
-        </script>    
-        </script>
+    <body>
+        <h2>Todays Special</h2>
+        <ul>
+            {% for special in specials %}
+            <li>
+                <strong>{{special.name}}</strong> - {{special.price}}<br>
+                {{special.description}}
+            </li>
+            {% empty %}
+            <p>No special available today</p>
+            {% endfor %}
+        </ul>
     </body>
 </html>
