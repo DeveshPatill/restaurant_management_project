@@ -256,3 +256,20 @@ def home_(request):
 # for privacy policy page
 def privacy_policy(request):
     return render(request, 'privacy_policy.html')
+
+# logic for breadcrumbs
+def homepage(request):
+    request.breadcrumbs = [("Home",None)]
+    return render(request, "homepage.html")
+
+def menu(request):
+    request.breadcrumbs = [('Home','/'),("Menu",None)]
+    return render(request, "menu.html")
+
+def order_confirmation(request):
+    request.breadcrumbs = [
+        ("Home","/"),
+        ("Menu", "/menu/"),
+        ("Order Confirmation", None)
+    ]
+    return render(request, "order_confirmation.html")
