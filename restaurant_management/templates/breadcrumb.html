@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>breadcrumbs</title>
+    </head>
+    <body>
+        <nav>
+            <ol class="breadcrumb">
+                {% for name, url in breadcrumbs %}
+                {% if url %}
+                <li class="breadcrumb-item">
+                    <a href="{{ url }}">{{name}}</a>
+                </li>
+                {% else %}
+                <li class="breadcrumb-item active" aria-current="page">{{name}}</li>
+                {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
+    </body>
+</html>
