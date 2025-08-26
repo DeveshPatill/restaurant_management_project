@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Restaurant Homepage </title>
-        <link rel="stylesheet" href="style1.css"> 
-    </head>
-    <body>
-        <header class="hero">
-            <div class="overlay">
-                <h2> Welcome to our Restaurant</h2>
-                <p> We serve Delicious food </p>
-            </div>
-        </header>
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome to Homepage</h2>
 
-        <section class="menu-preview">
-            <h2> Our Specialist </h2>
-            <div class="food-gallery">
-                <img src="images/pizza.jpg" alt="Pizza">
-                <img src="images/dessert.jpg" alt="Dessert">
-                <img src="images/pasta.jpg" alt="Pasta">
-            </div>
-        </section>
-    </body>
-</html>
+{% if user.is_authenticated %}
+<p>Hello, {{user.username}}</p>
+<a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+{% else %}
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endif %}
+{% endblock %}
