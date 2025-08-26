@@ -289,3 +289,7 @@ def home_page(request):
         else:
             form = AuthenticationForm()
         return render(request, "homepage.html", {"form":form})
+
+# order button logic
+def order_page(request):
+    return render(request, "order_page.html")
