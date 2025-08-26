@@ -37,6 +37,7 @@ urlpatterns = [
     path('about/', views.about, name='about')
     path('add/<int:item_id/', views.add_to_cart, name="add_to_cart"),
     path("cart/", views.view_cart, name="cart"),
+    path("privacy-policy/", views.privacy_policy,name="privacy-policy"),
 ]
 handler404 = "restaurant_management.views.error_404_page"
 if settings.DEBUG:
