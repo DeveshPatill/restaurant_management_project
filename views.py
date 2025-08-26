@@ -10,6 +10,8 @@ from django.http import HttpResponse
 from .forms import FeedBackForm,MenuItemForm,ContactForm
 from django.core.mail import send_mail
 import random
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login,authenticate
 
 @api_view(['GET'])
 def menu_api(request):
@@ -275,3 +277,15 @@ def order_confirmation(request):
         ("Order Confirmation", None)
     ], 
     return render(request, "order_confirmation.html", {"order_number" : order_number})
+
+#for login/logout logic
+def home_page(request):
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return render(request, "homepage.html",{"form":form, "message":"welcome back !"})
+        else:
+            form = AuthenticationForm()
+        return render(request, "homepage.html", {"form":form})
