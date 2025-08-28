@@ -20,11 +20,11 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ['name','email','message']
         error_messages = {
-            "email" = {
+            "email" : {
                 "invalid":"Please enter a valid email address",
                 "required":"Email is required"
             },
-            "message" = {
+            "message" : {
                 "required":"message cannot be empty"
             }
         }
