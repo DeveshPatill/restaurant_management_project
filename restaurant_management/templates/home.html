@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Your Specials </title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <h2>Todays Special</h2>
-        <ul>
-            {% for special in specials %}
-            <li>
-                <strong>{{special.name}}</strong> - {{special.price}}<br>
-                {{special.description}}
-            </li>
-            {% empty %}
-            <p>No special available today</p>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Opening Hours</h2>
+
+<ul>
+    {% for day, hours in opening_hours %}
+        <li>{{day}}: {{hours}}</li>
+    {% endfor %}
+</ul>
