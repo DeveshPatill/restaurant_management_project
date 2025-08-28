@@ -41,6 +41,8 @@ urlpatterns = [
     path("order/confirmation/", views.order_confirmation, name="order_confirmation")
     path('accounts/', include('django.contrib.auth.urls')),
     path("order/", views.order_page, name="order_page"),
+    path("contact/",views.contact_view, name="contact"),
+    path("thank-you/",lambda request: render(request, "thankyou.html", name="thankyou"))
 ]
 handler404 = "restaurant_management.views.error_404_page"
 if settings.DEBUG:
