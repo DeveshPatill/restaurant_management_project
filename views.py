@@ -4,7 +4,7 @@ from rest_framework import status
 from decimal import Decimal
 from django.shortcuts import render, redirect
 from .models import MenuItem
-from .models import Restaurant,Special
+from .models import Restaurant,Special,OpeningHour
 from django.conf import settings
 from django.http import HttpResponse
 from .forms import FeedBackForm,MenuItemForm,ContactForm
@@ -12,6 +12,7 @@ from django.core.mail import send_mail
 import random
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,authenticate
+
 
 @api_view(['GET'])
 def menu_api(request):
@@ -293,3 +294,8 @@ def home_page(request):
 # order button logic
 def order_page(request):
     return render(request, "order_page.html")
+
+# showing opening hours on homepage
+def homee(request):
+    opening_hours = OpeningHour.objects.all().order_by('id')
+    return render(request, "home.html",{"opening_hours":opening_hours})
