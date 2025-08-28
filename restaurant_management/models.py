@@ -72,6 +72,13 @@ class Special(models.Model):
     def __str__(self):
         return self.name
 
-        
+class OpeningHour(models.Model):
+    day = models.CharField(max_length=200)
+    open_time = models.TimeField()
+    close_time = models.TimeField()
+
+    def __str__(self):
+        return f"{self.day}: {self.open_time} - {self.close_time}"
+
 #python manage.py makemigrations
 #python manahe.py migrate
