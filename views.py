@@ -312,4 +312,7 @@ def contact_view(request):
     return render(request, "contact.html", {"form":form})
 
 
-#
+#displaying address on contact us page
+def contact_us(request):
+    restaurant = Restaurant.objects.all()
+    return render(request, "contact_us.html", {"restaurant":restaurant})
