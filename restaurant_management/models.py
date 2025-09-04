@@ -15,6 +15,7 @@ class Restaurant(models.Model):
     opening_hours = models.JSONField(default=dict)
     phone_number = models.CharField(max_length=15,blank=True,null=True)
     logo = models.ImageField(upload_to='restaurant_logos/',null =True,blank=True)
+    description = models.TextField()
 
     def __str__(self):
         return self.name
