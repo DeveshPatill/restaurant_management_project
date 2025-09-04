@@ -316,3 +316,8 @@ def contact_view(request):
 def contact_us(request):
     restaurant = Restaurant.objects.all()
     return render(request, "contact_us.html", {"restaurant":restaurant})
+
+#adding a restaurant description
+def aboutus(request):
+    restaurant = Restaurant.objects.first()
+    return render(request, 'about_us.html' {"restaurant":restaurant})
