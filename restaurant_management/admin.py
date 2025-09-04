@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import About,Restaurant
 
 admin.site.register(About)
-admin.site.register(restaurant)
+admin.site.register(Restaurant)
 
 @admin.register(Special)
 class SpecialAdmin(admin.ModelAdmin):
