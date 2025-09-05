@@ -43,7 +43,8 @@ urlpatterns = [
     path("order/", views.order_page, name="order_page"),
     path("contact/",views.contact_view, name="contact"),
     path("thank-you/",lambda request: render(request, "thankyou.html", name="thankyou")),
-    path("menu/",views.MenuList, name="menu")
+    path("menu/",views.MenuList, name="menu"),
+    path("about-chef", views.about_chef, name="about_chef"),
 ]
 handler404 = "restaurant_management.views.error_404_page"
 if settings.DEBUG:
