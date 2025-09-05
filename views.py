@@ -12,6 +12,9 @@ from django.core.mail import send_mail
 import random
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,authenticate
+from django.core.paginator import Paginator
+from django.shortcuts import render
+from .models import MenuItem
 
 
 @api_view(['GET'])
@@ -321,3 +324,18 @@ def contact_us(request):
 def aboutus(request):
     restaurant = Restaurant.objects.first()
     return render(request, 'about_us.html' {"restaurant":restaurant})
+
+
+# basic pagination for menu items
+
+def MenuList(request):
+    menu_item = MenuItem.objects.all()
+
+    #paginate with 5items per page
+    paginator = Paginator(menu_item, 5)
+
+    #get current page from query string
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'menu.html' , {"page_obj":page_obj})
