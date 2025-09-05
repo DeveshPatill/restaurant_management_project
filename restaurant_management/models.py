@@ -81,5 +81,14 @@ class OpeningHour(models.Model):
     def __str__(self):
         return f"{self.day}: {self.open_time} - {self.close_time}"
 
+
+class Chef(models.Model):
+    name = models.CharField(max_length=225)
+    bio = models.TextField()
+    image = models.ImageField(upload_to='chefs/')
+
+    def __str__(self):
+        return self.name
+
 #python manage.py makemigrations
 #python manahe.py migrate
