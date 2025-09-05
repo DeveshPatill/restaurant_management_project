@@ -339,3 +339,8 @@ def MenuList(request):
     page_obj = paginator.get_page(page_number)
 
     return render(request, 'menu.html' , {"page_obj":page_obj})
+
+# implementing the simple about the chef section
+def about_chef(request):
+    chef = Chef.objects.first()
+    return render(request, 'about_chef.html', {"chef":chef})
