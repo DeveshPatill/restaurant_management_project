@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% content block %}
+
+<h1>About the Chef</h1>
+
+{% if chef %}
+    <img src="{{chef.image.url}}" alt="Chef {{chef.name}}">
+    <h2>{{chef.name}}</h2>
+    <p>{{chef.bio}}</p>
+{% else %}
+    <p>chef info is not available yet</p>
+{% endif %}
