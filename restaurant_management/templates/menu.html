@@ -1,19 +1,29 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title> menu page </title>
-    </head>
-    <body>
-        <h2>Menu</h2>
-        <ul>
-            {% for id,item in menu.items %}
-            <li>
-                {{item.name}} - {item.price}}
-                <a href="{% url 'add_to_cart' id %}">Add to cart</a>
-            </li>
-            {% endfor %}
-        </ul>
-        <a href="{% url 'view_cart' %}"> View Cart</a>
-    </body>
-</html>
+{% extends 'base.html' %}
+{% content block %}
+
+<h1>Menu</h1>
+
+<ul>
+{% for item in page_obj %}
+<li>{% item.name %} -{% item.price %}</li>
+{% empty %}
+<li>No menu item available.</li>
+{% endfor %}
+</ul>
+
+<!------------------pagination controls----------------------------------->
+<div class="pagination">
+    {% if page_obj.has_previous %}
+        <a href="?page=1">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    <span>Page {{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number}} ">Next</a>
+        <a href="?page={{page_obj.paginator.num_pages}}">Last</a>
+    {% endif %}
+</div>
+
+
