@@ -15,6 +15,8 @@ from django.contrib.auth import login,authenticate
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from .models import MenuItem
+from django.contrib import messages
+from .forms import ContactForm
 
 
 @api_view(['GET'])
@@ -344,3 +346,17 @@ def MenuList(request):
 def about_chef(request):
     chef = Chef.objects.first()
     return render(request, 'about_chef.html', {"chef":chef})
+
+# Improve contact us feedback / enhancing the contact us feedback form to provide more specific  feedback form to user submission for example a simple thankyou
+def contact_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+        
+            messages.success(request, "Thank You, your message has been sent!")
+            return redirect("contact")
+        else:
+            form = ContactForm()
+        
+        return render(request, "contact.html" {"form":form})
