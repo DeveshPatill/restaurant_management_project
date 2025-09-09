@@ -12,11 +12,14 @@
         <!--{% if about.image %}
                 <img src="{{about.image.url}} alt="Restaurant-Image" width=400
             {% endif %}-->
-        
+        <p>Thankyou for visiting our restaurant</p>
         {% if image_url %}
             <img src="{{ image_url }}" alt="Restaurant Image. " style="max-width: 100%; height:auto;" >
         {% endif %}
 
         <a href=" {% url 'homepage' %} "> Back to Home </a>
+        <footer>
+            <p>&copy; 2025 our company. all rights reserved</p>
+        </footer>
     </body>
 </html>
