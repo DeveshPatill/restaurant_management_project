@@ -8,3 +8,8 @@ def cart_item_count(request):
 
 def breadcrumb_context(request):
     return{"breadcrumbs": getattr(request, "breadcrumbs",[])}
+
+def current_time(request):
+    return {
+    'current_year': datetime.datetime.now().now
+}
