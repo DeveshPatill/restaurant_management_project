@@ -26,6 +26,16 @@
                 {{form.message}}
                 {{form.message.errors}}
             </p>
+            <hr>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            {{form.as_p}}
             
             <!---{{ form.as_p }}----->
             <button type="submit">Send</button>
