@@ -1,57 +1,61 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container text-center mt-5">
-    <h1>Welcome to our store</h1>
-    <p>Delicious meals Delivered fresh to u</p>
-
-    <a href="{% url 'order_page' %}" class="order-btn">Order Now</a>
-</div>
-
+<title>Restaurant Opening Hours</title>
+<head>
 <style>
-    .order-btn{
-    display: inline-block;
-    background-color: #ff5722;
-    color: white;
-    padding: 15px 30px;
-    font-size:18px;
-    font-weight:bold;
-    border-radius:8px;
-    text-decorationnone;
-    transition: background 0.3s ease;
-    }
-    .order-btn:hover {
-    background-color: #e64a19;
-    }
     body {
-        font-family: Arial, sans-serif;
-        background: #f9f9f9;
+        font-family: Arial,sans-serif;
+        background-color: #f9f9f9;
         margin: 0;
         padding: 0;
+
     }
-    nav.breadcrumb {
-        padding: 10px 20px;
-        background: #eee;
-        font-size: 14px;
+    .opening-times {
+        max-width: 400px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    nav. breadcrumb a{
-        color: #0007bff;
-        text-decoration: none;
+    .opening-times h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 15px;
+
     }
-    nav.breadcrumb a:hover{
-        text-decoration: underline;
+    .opening-times ul {
+        list-style: none;
+        padding: 0;
     }
-    nav.breadcrumb span {
-        color: #555;
+    opening-times li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+    }
+    .opening-times li:last-child {
+        border-bottom: none;
+    }
+    .day {
+        font-weight: bold;
+    }
+    .time {
+        color: #666;
     }
 </style>
+</head>
 <body>
-    <nav class="breadcrumb">
-        <a href="index.html">Home</a>
-    </nav>
-
-    <main style="padding: 20px; ">
-        <h1>welcome to the homepage</h1>
-        <p>this is the homepage content.</p>
-    </main>
+    <div class="opening-times">
+        <h2>opening hours</h2>
+        <ul>
+            <li><span class="day">Monday</span><span class="time">9:00AM - 10:00PM</span></li>
+            <li><span class="day">Tuesday</span><span class="time">9:00AM - 10:00PM</span></li>
+            <li><span class="day">Wednesday</span><span class="time">9:00AM - 10:00PM</span></li>
+            <li><span class="day">Thursday</span><span class="time">9:00AM - 10:00PM</span></li>
+            <li><span class="day">Friday</span><span class="time">9:00AM - 10:00PM</span></li>
+            <li><span class="day">Saturday</span><span class="time">9:00AM - 12:00PM</span></li>
+            <li><span class="day">Sunday</span><span class="time">Closed</span></li>
+        </ul>
+    </div>
 </body>
-{% endblock %}
+{% endblock content %}
