@@ -360,3 +360,10 @@ def contact_view(request):
             form = ContactForm()
         
         return render(request, "contact.html" {"form":form})
+
+#displaying restaurant name SEO-FRIENDLY
+def title(request):
+    context = {
+        "page_title":"My spicy restaurant - Authentic dining in mumbai"
+    }
+    return render(request, "index.html", context)
