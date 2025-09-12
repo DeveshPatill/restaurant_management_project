@@ -9,6 +9,7 @@
         {% block content %}
         <!----- our page specific content----->
         {% endblock content %}
+        <a href="{% url 'home.html' %}"><img src="{% static 'images/logo.png' %}" alt="My Spicy Restaurant</a>
 
         <footer style="text-align: center; padding: 1rem; background: #f5f5f5; font-size: 0.9rem;">
             &copy; <p>Opening Hours: {{opening_hour}}</p> {{current_year}}  My Spicy Restaurant. All Rights Reserved ---
