@@ -1,5 +1,5 @@
 from django import forms
-from .models import Feedback,MenuItem,ContactForm
+from .models import Feedback,MenuItem,ContactForm,NewsletterSubscriber
 
 
 class FeedbackForm(forms.ModelForm):
@@ -27,6 +27,14 @@ class ContactForm(forms.ModelForm):
             "message" : {
                 "required":"message cannot be empty"
             }
+        }
+
+class NewsletterSubscriber(forms.ModelForm):
+    class Meta:
+        model = NewsletterSubscriber
+        fields = ['email']
+        widgets = {
+            'email':forms.EmailInput(attrs={'placeholder':'Enter your email','class':'form-control'})
         }
 
         
