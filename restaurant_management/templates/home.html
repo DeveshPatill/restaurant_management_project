@@ -2,6 +2,13 @@
 
 {% block title %} - My Website {% endblock %}
 {% block content %}
-<h1>welcome to my website</h1>
-<p>this is some content</p>
+<div class="conyiner mt-5">
+    <h1>welcome to my website</h1>
+    <<h2>subscribe to our newsletter for updates:<h2>
+        <form method="post">
+            {% csrf_token %}
+            {{form.email}}
+            "btn btn-primary mt-2">Subscribe</button>
+        </form>
+</div>
 {% endblock content %}
