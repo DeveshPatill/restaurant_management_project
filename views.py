@@ -16,7 +16,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from .models import MenuItem
 from django.contrib import messages
-from .forms import ContactForm
+from .forms import ContactForm,newsletterForm
 
 
 @api_view(['GET'])
@@ -367,3 +367,15 @@ def title(request):
         "page_title":"My spicy restaurant - Authentic dining in mumbai"
     }
     return render(request, "index.html", context)
+
+#implementing the simple newsletter signup in django
+def home_1(request):
+    if request.method == 'POST':
+        form = newsletterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = newsletterForm()
+
+    return render(request, 'home.html', {'form':form})
