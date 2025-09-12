@@ -98,5 +98,12 @@ class MenuItem(models.Model):
     def __str__(self):
         return self.name
 
+class NewsletterSubscriber(models.Model):
+    email = models.EmailField(unique=True)
+    subscribed_at = models.DateTimeField(auto_now_add=True)
+
+    derf __str__(self):
+    return self.email
+
 #python manage.py makemigrations
 #python manahe.py migrate
