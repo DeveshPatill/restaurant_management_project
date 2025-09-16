@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 from decimal import Decimal
 from django.shortcuts import render, redirect
-from .models import MenuItem
+from .models import MenuItem,MenuCategory
 from .models import Restaurant,Special,OpeningHour
 from django.conf import settings
 from django.http import HttpResponse
@@ -17,6 +17,9 @@ from django.shortcuts import render
 from .models import MenuItem
 from django.contrib import messages
 from .forms import ContactForm,newsletterForm
+from rest_framework.generics import ListAPIView
+from .serializers import MenuCategorySerializer
+
 
 
 @api_view(['GET'])
@@ -379,3 +382,7 @@ def home_1(request):
         form = newsletterForm()
 
     return render(request, 'home.html', {'form':form})
+
+class MenuCategoryListView(ListAPIView):
+    queryset = MenuCategory.objects.all()
+    serializer_class = MenuCategorySerializer
