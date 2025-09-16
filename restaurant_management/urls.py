@@ -45,6 +45,7 @@ urlpatterns = [
     path("thank-you/",lambda request: render(request, "thankyou.html", name="thankyou")),
     path("menu/",views.MenuList, name="menu"),
     path("about-chef", views.about_chef, name="about_chef"),
+    path('categories/', MenuCategoryListView.as_view(),name='menu-categories'),
 ]
 handler404 = "restaurant_management.views.error_404_page"
 if settings.DEBUG:
