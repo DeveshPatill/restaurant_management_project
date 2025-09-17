@@ -102,8 +102,16 @@ class NewsletterSubscriber(models.Model):
     email = models.EmailField(unique=True)
     subscribed_at = models.DateTimeField(auto_now_add=True)
 
-    derf __str__(self):
+    def __str__(self):
     return self.email
+
+class Coupon(models.Model):
+    code = CharField(max_length=20, unique=True)
+    discoint = models.DecimalField(max_digits=5, decimal_places=2)
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.code 
 
 #python manage.py makemigrations
 #python manahe.py migrate
