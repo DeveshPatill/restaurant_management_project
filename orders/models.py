@@ -27,7 +27,7 @@ class Orderstatus(models.Model):
 
 class Order(models.Model):
     customer_name = models.CharField(max_length=100)
-    total_price = models.DecimalFiels(max_length=10, Decimalplaces=2)
+    total_price = models.DecimalField(max_length=10, Decimalplaces=2)
     created_at = models.DateTimeField(auto_now_add=True)
 
     status = models.ForeignKey(
@@ -45,3 +45,19 @@ class MenuCategory(models.Model):
 
     def __str__(self):
         return self.name
+
+class Item(models.Model):
+    name=models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, Decimalplaces=2)
+
+    def __str__(self):
+        return self.name
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
+    date=models.DateTimeField(auto_now_add=True)
+    total_price = models.DecimalField(max_digits=10, Decimalplaces=2)
+    items = models.ManyToManyField(Item, related_name="orders")
+
+    def __str__(self):
+        return f"Order {self.id} by {self.user.username}
