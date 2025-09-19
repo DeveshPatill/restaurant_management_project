@@ -24,3 +24,4 @@ def menu_items_by_category(request):
         items = MenuItem.objects.all()
     serializer = MenuItemSerializer(items, many=True)
     return Response(serializer.data)
+
