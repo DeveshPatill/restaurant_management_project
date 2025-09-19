@@ -5,5 +5,6 @@ urlpatterns = [
     path("history/",OrderHistoryView.as_View(),name="order-history"),
     path('menu-items/',menu_items_by_category, name="menu-items-by-category"),
     path("menu-items/<int:pk>/update/",UpdateMenuItemView.as_view(), name='update-menu-item')
+    path("menu-items/search/", MenuItemSearch.as_View(), name="menu-item-search"),
     
 ]
