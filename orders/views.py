@@ -36,5 +36,16 @@ def submit_email(request):
     else:
         return JsonResponse({"error":"Invalid Email address"},status=400)
 
+class UpdateMenuItem(APIView):
+    def put(self, request, pk):
+        item = get_object_or_404(MenuItem, pk=pk)
+        serializer = MenuItemSerializer(item, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
