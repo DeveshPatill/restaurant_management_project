@@ -6,6 +6,8 @@ from .models import order.MenuItem
 from .serializers import OrderSerializer,MenuItemSerializer
 from django.http import JsonResponse
 from utils.validation_utils import is_valid_email
+from rest_framework.generics import ListAPIView
+from rest_framework.pagination import PageNumberPagination
 
 
 # Create your views here.
@@ -46,6 +48,17 @@ class UpdateMenuItem(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class MenuItemSearchView(ListAPIView):
+    serializer_class = MenuItemSerializer
+    pagination_class = PageNumberPagination
+
+    def get_queryset(Self):
+        query = self.request.query_params.get('q',None)
+        queryset = MenuItem.objects.all()
+        if query:
+            queryset = queryset.filter(name__icontains=query)
+        return queryset
 
 
 
