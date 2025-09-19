@@ -15,4 +15,9 @@ class OrderSerializer(Serializers.ModelSerializer):
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItem
-        fields =['id','name','price','category']
+        fields =['id','name','description','price','category','is_available']
+
+        def validate_price(self,value):
+            if value <=0:
+                raise serializers.alidationError("Price must be a positive number.")
+            return value
