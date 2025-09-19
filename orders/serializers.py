@@ -11,3 +11,8 @@ class OrderSerializer(Serializers.ModelSerializer):
 
     class Meta:
         model =Orderfields =["id","date","total_price","items"]
+
+class MenuItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuItem
+        fields =['id','name','price','category']
