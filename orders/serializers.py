@@ -21,3 +21,4 @@ class MenuItemSerializer(serializers.ModelSerializer):
             if value <=0:
                 raise serializers.alidationError("Price must be a positive number.")
             return value
+
