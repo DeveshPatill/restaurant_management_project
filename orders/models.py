@@ -82,3 +82,15 @@ class MenuItem(models.Model):
 class ActiveOrderManager(models.Manager):
     def_active_orders(self):
         return super().get_queryset().filter(status__in=['pending','processing'])
+
+class Restaurant(models.Model):
+    name = models.CharField(max_length=255)
+    address = models.TextField()
+
+    opening_days = models.CharField(
+        max_length=100,
+        help_text= "Comma-seperated days (e.g.,Mon ,Tue,Wed,Thu,Fri)"
+    )
+    
+    def __str__(self):
+        return self.name
