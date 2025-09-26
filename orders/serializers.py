@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Order, Item
+from django.contrib.auth.models import User
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,4 +22,10 @@ class MenuItemSerializer(serializers.ModelSerializer):
             if value <=0:
                 raise serializers.alidationError("Price must be a positive number.")
             return value
+
+
+class UserProfileSerializer(Serializers.ModelSerializer):
+    class Meta:
+        model = Userfields = ['first_name','last_name','email']
+
 
