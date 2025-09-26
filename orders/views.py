@@ -71,5 +71,13 @@ class UserProfileViewSet(Viewsets.ViewSet):
             return Response({"message":"Profile updated succesfully", "data":serializer.data})
         return Response(serializer.errors, status=400)
 
+def PLACE_ORDER(request):
+    order_id =1234
+    customer_email = "patildevesh677@gmail.com"
+    customer_name = "devesh patil"
+
+    result =send_order_confirmation_email(order_id, customer_email, customer_name)
+    return JsonResponse(result)
+
 
 
