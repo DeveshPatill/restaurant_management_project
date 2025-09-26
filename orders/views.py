@@ -60,5 +60,16 @@ class MenuItemSearchView(ListAPIView):
             queryset = queryset.filter(name__icontains=query)
         return queryset
 
+class UserProfileViewSet(Viewsets.ViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+
+    @action(detail=False, methods=['put'])
+    def update_profile(self, request):
+        user = request.userserializer = UserProfileSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message":"Profile updated succesfully", "data":serializer.data})
+        return Response(serializer.errors, status=400)
+
 
 
