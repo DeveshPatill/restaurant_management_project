@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Order, Item
 from django.contrib.auth.models import User
+from home.models import Product
 
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,5 +28,19 @@ class MenuItemSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(Serializers.ModelSerializer):
     class Meta:
         model = Userfields = ['first_name','last_name','email']
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        models = Product
+        fields = ["id","name","price"]
+
+class OrderSerializer(serializers.ModelSerializer):
+    items = ProductSerializer(many=True)
+    customer = serializers.StringRelatedField()
+
+    class Meta:
+        model = Orderfields = ["order_id","customer","items","total_price","created_at"]
+
+
 
 
