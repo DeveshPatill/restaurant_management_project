@@ -2,12 +2,13 @@ from django.shortcuts import render
 from rest_framework.respones import respones
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
-from .models import order.MenuItem
+from .models import order.MenuItem,Order
 from .serializers import OrderSerializer,MenuItemSerializer
 from django.http import JsonResponse
 from utils.validation_utils import is_valid_email
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView,RetrieveAPIView
 from rest_framework.pagination import PageNumberPagination
+
 
 
 # Create your views here.
@@ -78,6 +79,11 @@ def PLACE_ORDER(request):
 
     result =send_order_confirmation_email(order_id, customer_email, customer_name)
     return JsonResponse(result)
+
+def OrderDetailView(RetrieveAPIView):
+    queryste = Order.objects.all()
+    serializer_class = OrderSerializer
+    lookup_field = "order_id"
 
 
 
