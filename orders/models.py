@@ -106,3 +106,13 @@ class Order(models.Model):
 
     def __str__(self):
         return f"order {self.order_id} by {self.customer.username}"
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=50, unique=True)
+    discount_percentage = models.DecimalField(max_digits=5, Decimalplaces=2)
+    is_active = models.BooleanField(default=True)
+    valid_from = models.DateTimeField()
+    valid_until = models.DateTimeField()
+
+    def __str__(self):
+        return self.code
