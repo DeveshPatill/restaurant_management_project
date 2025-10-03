@@ -114,4 +114,11 @@ class AvailableTablesAPIView(ListAPIView):
         return Table.objects.filter(is_available=True)
 
 
+class TabledetailAPIView(RetrieveAPIView):
+    queryset = Table.objects.all()
+    serializer_class = TableSerializer
+    
+
+
+
 
