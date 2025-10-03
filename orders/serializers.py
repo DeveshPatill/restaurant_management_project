@@ -41,6 +41,10 @@ class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model = Orderfields = ["order_id","customer","items","total_price","created_at"]
 
+class TableSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ['table_number','capacity','is_available']
+
 
 
 
