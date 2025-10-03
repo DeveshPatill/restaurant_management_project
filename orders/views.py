@@ -113,3 +113,5 @@ class AvailableTablesAPIView(ListAPIView):
     def get_queryset(self):
         return Table.objects.filter(is_available=True)
 
+
+
