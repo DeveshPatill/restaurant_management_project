@@ -8,4 +8,5 @@ urlpatterns = [
     path("menu-items/search/", MenuItemSearch.as_View(), name="menu-item-search"),
     path('api/profile/update', user_profile_update, name='profile-update',)
     path('coupons/validate/', CouponValidationView.as_View(), name="coupon-validate"),
+    path('api/tables/available', AvailableTablesAPIView.as_View(), name='available')
 ]
