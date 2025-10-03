@@ -106,4 +106,10 @@ class CouponValidationView(APIView):
             }, status=status.HTTP_200_OK)
         else:
             return Response({"error":"Coupon has expired or not yet valid"}, status=status.HTTP_400_BAD_REQUEST)
+        
+class AvailableTablesAPIView(ListAPIView):
+    serializer_class = TableSerializer
+
+    def get_queryset(self):
+        return Table.objects.filter(is_available=True)
 
