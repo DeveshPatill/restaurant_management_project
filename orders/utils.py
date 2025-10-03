@@ -4,6 +4,8 @@ from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings 
 import logging
 from datetime import datetime, time
+from django.db.models import Sum
+from .models import Order
 
 def is_valid_email(email: str)-> bool:
     try:
@@ -60,3 +62,8 @@ def is_restaurant_open9:
     }
     open_time, close_time = opening_hours[current_day]
     return open_time <= current_time <= close_time
+
+def get_daily_sales_total(date):
+    result = Order.objects.filter(created_at__date=date).aggregate(total_sum=Sum('total_price'))
+    return result['total_sum'] or 0
+
