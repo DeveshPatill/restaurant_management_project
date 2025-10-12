@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from home.models import Product
+from decimal import Decimal
 
 # Create your models here.
 from django.db.models.signals import post_migrate
@@ -60,9 +61,17 @@ class Order(models.Model):
     date=models.DateTimeField(auto_now_add=True)
     total_price = models.DecimalField(max_digits=10, Decimalplaces=2)
     items = models.ManyToManyField(Item, related_name="orders")
+    customer_name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def calculate_total(self):
+        total = decimal('0.00')
+        for item in self.orderitem_set.all():
+            total += item.price * item.quantity
+        return total
 
     def __str__(self):
-        return f"Order {self.id} by {self.user.username}
+        return f"Order {self.id} by {self.customername}
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -116,3 +125,25 @@ class Coupon(models.Model):
 
     def __str__(self):
         return self.code
+
+class Order(models.Model):
+    customer_name = model.CharField(max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def calculate_total(self):
+        total = Decimal('0.00')
+        for item in self.orderitem_set.all():
+            total += item.price * item.quantity
+        return total
+
+    def __str__(Self):
+        return f"Order #{self.id} - {self.customer_name}"
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    menu_item = models.ForeignKey(MenuItem, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    price = models.DecimalField(max_digits=8, Decimalplaces=2)
+
+    def __str__(self):
+        return f"{self.menu_item.name} x {self.quantity}"
