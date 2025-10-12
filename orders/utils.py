@@ -28,10 +28,9 @@ def send_order_confirmation_email(order_id, customer_email, customer_name=None):
     Your order ID is {order_id}.
     We will notify you once it has been shipped.
 
-    Regards,
+    Regards,,
     Your Company Team
     """
-
     from_email = settings.DEFAULT_FROM_EMAIL
     recipient_list = [customer_email]
 
