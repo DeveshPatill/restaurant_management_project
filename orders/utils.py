@@ -6,6 +6,8 @@ import logging
 from datetime import datetime, time
 from django.db.models import Sum
 from .models import Order
+import secrets, strings
+
 
 def is_valid_email(email: str)-> bool:
     try:
@@ -65,4 +67,13 @@ def is_restaurant_open9:
 def get_daily_sales_total(date):
     result = Order.objects.filter(created_at__date=date).aggregate(total_sum=Sum('total_price'))
     return result['total_sum'] or 0
+
+
+def genertae_unique_order_id(length=8):
+    characyters = string.ascii_uppercase + string.digits
+
+    while True:
+        unique_id = ''.join(secrets.choice(characters)for _ in range(length))
+        if not Order.objects.filter(order_id=unique_id).exists():
+            return unique_id
 
