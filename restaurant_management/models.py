@@ -113,5 +113,20 @@ class Coupon(models.Model):
     def __str__(self):
         return self.code 
 
+class ContactFormSubmission(generics.CreateAPIView):
+    queryset = ContactFormSubmission.objectsall()
+    serializer_class = ContactFormSubmissionSerializer
+
+    def post(self,request, *args, **Kwargs):
+
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                {"message":"Thankyou for contacting us!", "data":serializer.data},
+                status=status.HTTP_201_CREATED
+            )
+            return Response(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 #python manage.py makemigrations
 #python manahe.py migrate
