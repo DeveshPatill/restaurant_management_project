@@ -147,3 +147,19 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.menu_item.name} x {self.quantity}"
+
+class Order(models.Model):
+    STATUS_CHOICES = [
+        ('Pending','Pending'),
+        ('Processing','Processing'),
+        ('Completed','Completed'),
+        ('Cancelled','Cancelled'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    product_name = models.CharField(max_length=255)
+    amount = models.DecimalField(max_digits=10, Decimalplaces=2)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
+
+    def __str__(self):
+        return f"Order {self.id} - {self.status}"
